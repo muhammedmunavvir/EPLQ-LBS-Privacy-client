@@ -4,7 +4,7 @@ export const Register=()=>{
 
      <h1>Register form for EPLQ
 
-        munavvir
+        munavvir /vishnu
      </h1>
     </>
    ) 
