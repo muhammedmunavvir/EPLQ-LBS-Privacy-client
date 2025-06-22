@@ -3,6 +3,8 @@ import { axiosInstance } from "../api/axiosinstance";
 
 
 export const AdminPage = () => {
+
+  
   const [formData, setFormData] = useState({
     name: "",
     type: "Hospital",
@@ -57,7 +59,11 @@ export const AdminPage = () => {
     });
   } catch (err) {
     console.error(err);
-    setError("Something went wrong.");
+    if (err.response?.data?.message) {
+      setError(err.response.data.message);
+    } else {
+      setError("Something went wrong.");
+    }
   }
 };
 
@@ -68,7 +74,14 @@ export const AdminPage = () => {
       });
       setUserPicture(res.data.picture);
     } catch (error) {
-      console.log(error);
+    console.error(err);
+
+  
+  if (err.response && err.response.data && err.response.data.message) {
+    setError(err.response.data.message); 
+  } else {
+    setError("Something went wrong.");
+  }
     }
   };
 
